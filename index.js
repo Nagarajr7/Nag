@@ -1,3 +1,4 @@
+
 const { response } = require('express')
 const express=require('express')
 const mongoose=require('mongoose')
@@ -7,6 +8,7 @@ const PORT=process.env.PORT ||3000
 const DATABASR_URL =process.env.DATABASE_URL || 'mongodb://localhost/movies'
 const Movie =require('./models/movie.js')
 app.use(express.json())
+app.use(express.static('public'))
 mongoose.connect('mongodb://localhost/movies',{useUnifiedTopology :true});
 var db=mongoose.connection;
 db.on("error",error => console.error(error))
@@ -14,6 +16,7 @@ db.once("open",() =>console.log("hi"))
 app.use('/movies',moviesRouter)
 
 /*
+
 var ab=[{id:10,lesson:'qnnq'},
 {id: 10,lesson :'djjd'},
 {id:4 ,lesson:'fnfk'}]
@@ -81,5 +84,3 @@ app.delete('/name/lessons/:id',function(req,res)
 
 */
 app.listen(3000)
-var a=10
-console.log('bfbfbw:${a}')
