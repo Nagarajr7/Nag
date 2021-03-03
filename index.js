@@ -1,13 +1,11 @@
-
-const { response } = require('express')
 const express=require('express')
 const mongoose=require('mongoose')
 const app=express()
 const moviesRouter =require("./router/movies.js")
 const PORT=process.env.PORT ||3000
-const DATABASR_URL =process.env.DATABASE_URL || 'mongodb://localhost/movies'
+const DATABASE_URL = process.env.DATABASE_URL||'mongodb://localhost/movies'
 const Movie =require('./models/movie.js')
-app.use(express.json())
+app.use(express.json());
 app.use(express.static('public'))
 mongoose.connect('mongodb://localhost/movies',{useUnifiedTopology :true});
 var db=mongoose.connection;
